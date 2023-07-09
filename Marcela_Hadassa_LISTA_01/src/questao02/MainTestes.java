@@ -3,8 +3,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 public class MainTestes {
 	public static void main(String [] args) {
+
 		
 		ControladorMidia videoTube = ControladorMidia.getInstance();
 		ArrayList<String> conteudo = new ArrayList<>();
@@ -14,6 +16,8 @@ public class MainTestes {
 		Produtor produtorUm = new Produtor("Taylor Swift", LocalDate.parse("1989-12-13"), "taylorswift@gmail.com", "Cowboy like Taylor", conteudo);
 		Produtor produtorDois = new Produtor("Louis Tomlinson", LocalDate.parse("1991-12-24"), "lt91@gmail.com", "Louis Tomlinson", conteudo);
 		Produtor produtorTres = new Produtor("Thomas Muller", LocalDate.parse("1989-09-13"), "thomasmuller@gmail.com", "Embaixadinhas do Muller", conteudo);
+		
+	
 		
 		videoTube.cadastrarUsuario(produtorUm);
 		videoTube.cadastrarUsuario(produtorDois);
@@ -39,25 +43,25 @@ public class MainTestes {
 		Consumidor consumidorSete = new Consumidor("Suani Batista de Oliveira", LocalDate.parse("1963-02-26"), "suanioliveira@gmail.com", interesses);
 		
 		
-		videoTube.cadastrarUsuario(consumidorUm);
-		videoTube.cadastrarUsuario(consumidorDois);
-		videoTube.cadastrarUsuario(consumidorTres);
-		videoTube.cadastrarUsuario(consumidorQuatro);
-		videoTube.cadastrarUsuario(consumidorCinco);
-		videoTube.cadastrarUsuario(consumidorSeis);
-		videoTube.cadastrarUsuario(consumidorSete);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorUm);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorDois);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorTres);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorQuatro);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorCinco);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorSeis);
+		videoTube.getRepositorioUsuario().getLista().add(consumidorSete);
 		
 		
-		videoTube.removerUsuario(consumidorSete);
+		videoTube.getRepositorioUsuario().getLista().remove(consumidorSete);
 		
 		ArrayList<Usuario> primeiraListagem = videoTube.listarUsuariosComIdadeAcimaDe(16);
-		System.out.println("Listagem de Usuarios - Acima de 16 anos: ");
+		System.out.println("Listagem de Usuarios - Acima de 16 anos: \n");
 		for (Usuario usuario : primeiraListagem) {
 			System.out.println(usuario.getnomeCompleto());
 		}
 		
 		ArrayList<Usuario> segundaListagem = videoTube.listarUsuariosPorTipo(consumidorUm.getClass());
-		System.out.println("Listagem de Usuarios - Consumidores: ");
+		System.out.println("\n\nListagem de Usuarios - Consumidores: \n");
 		for (Usuario usuario : segundaListagem) {
 			System.out.println(usuario.getnomeCompleto());
 		}
@@ -72,30 +76,30 @@ public class MainTestes {
 		Midia midiaOito = new Midia(LocalDateTime.now().minusDays(7000), "Cantando com ex amigos", 16, "Musica", produtorDois);
 		
 		
-		videoTube.cadastrarMidia(midiaUm);
-		videoTube.cadastrarMidia(midiaDois);
-		videoTube.cadastrarMidia(midiaTres);
-		videoTube.cadastrarMidia(midiaQuatro);
-		videoTube.cadastrarMidia(midiaCinco);
-		videoTube.cadastrarMidia(midiaSeis);
-		videoTube.cadastrarMidia(midiaSete);
+		videoTube.getRepositorioMidia().getMidia().add(midiaUm);
+		videoTube.getRepositorioMidia().getMidia().add(midiaDois);
+		videoTube.getRepositorioMidia().getMidia().add(midiaTres);
+		videoTube.getRepositorioMidia().getMidia().add(midiaQuatro);
+		videoTube.getRepositorioMidia().getMidia().add(midiaCinco);
+		videoTube.getRepositorioMidia().getMidia().add(midiaSeis);
+		videoTube.getRepositorioMidia().getMidia().add(midiaSete);
 		
 		
-		videoTube.removerMidia(midiaOito);
+		videoTube.getRepositorioMidia().getMidia().remove(midiaOito);
 		
 		
 
 		
 		ArrayList<Midia> terceiraListagem = videoTube.listarMidiaPorFaixaEtaria(14);
-		System.out.println("Listagem de Midias - Faixas acima de 14 anos: ");
-		for (Midia midia : terceiraListagem) {
-			System.out.println(midia.getArquivo());
+		System.out.println("\n\nListagem de Midias - Faixas acima de 14 anos:\n ");
+		for (Midia faixaEtaria : terceiraListagem) {
+			System.out.println(faixaEtaria.getArquivo());
 		}
 		
-		ArrayList<Midia> quartaListagem = videoTube.listarMidiasPorCategoria("Programacao");
-		System.out.println("Listagem de Midias - Categoria Programacao");
-		for (Midia midia : quartaListagem) {
-			System.out.println(midia.getCategoria());
+		ArrayList<Midia> quartaListagem = videoTube.listarMidiasPorCategoria("Historia");
+		System.out.println("\n\nListagem de Midias - Categoria Programacao:\n ");
+		for (Midia porCategoria : quartaListagem) {
+			System.out.println(porCategoria.getArquivo());
 		
 		}
 		
@@ -121,14 +125,13 @@ public class MainTestes {
 		videoTube.reproduzirMidia(consumidorQuatro, midiaSete);
 		videoTube.reproduzirMidia(consumidorDois, midiaUm);
 		
-		
-		//ArrayList<ReproducaoMidia> quintaListagem = videoTube.listarReproducoesNoPeriodo());
-		//System.out.println("Listagem de Reproducoes em determinados periodos: ");
-		//for (ReproducaoMidia repMidia : quintaListagem) {
-			//System.out.println(quintaListagem);
-		//}
+	
+		ArrayList<ReproducaoMidia> quintaListagem = videoTube.listarReproducoesNoPeriodo(LocalDateTime.parse("2020-05-24"), LocalDateTime.now());
+		System.out.println("Listagem de Reproducoes em determinados periodos: ");
+		for (ReproducaoMidia repMidia : quintaListagem) {
+			System.out.println(repMidia.toString());
+		}
 
 	}
 	
-	
-}
+	}

@@ -1,6 +1,7 @@
 package questao03;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class RepositorioPessoa {
 	private ArrayList<Pessoa> listaPessoa = new ArrayList<>();
@@ -59,10 +60,18 @@ public class RepositorioPessoa {
 		 }
 		 return participantesComInteresse;
 	}
-	
+	 
 	
 	public ArrayList<Participante> listarParticipantesComIdadeMaiorQue(int idade) {
-		ArrayList<Participantes> participantesComIdadeMaioQue
-	}
+		ArrayList<Participante> participantesComIdadeMaiorQue = new ArrayList<>();
+		for (Pessoa pessoaDois : listaPessoa) {
+			if(pessoaDois instanceof Participante) {
+				if (((Participante) pessoaDois).getDataNascimento().getYear() >= idade) {
+						participantesComIdadeMaiorQue.add((Participante) pessoaDois);
+					}
+				}
+			}
+		return participantesComIdadeMaiorQue;
+	}	
 	
 }

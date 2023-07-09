@@ -35,4 +35,12 @@ public class ReproducaoMidia {
 	public void setdataHoraReproducao(LocalDateTime dataHoraReproducao) {
 		this.dataHoraReproducao = dataHoraReproducao;
 	}
+
+	@Override
+	public String toString() {
+		return "ReproducaoMidia [midia=" + midia + ", consumidor=" + consumidor + ", dataHoraReproducao="
+				+ dataHoraReproducao + "]";
+	}
+	
+	
 }

@@ -9,6 +9,19 @@ public class RepositorioReproducaoMidia {
 	public void repositorioReproducaoMidia() {
 		reproducao = new ArrayList<>();
 	}
+	
+
+	protected ArrayList<ReproducaoMidia> getReproducao() {
+		return reproducao;
+	}
+
+
+
+	protected void setReproducao(ArrayList<ReproducaoMidia> reproducao) {
+		this.reproducao = reproducao;
+	}
+
+
 
 	public void cadastrarReproducaoMidia(ReproducaoMidia rm) {
 		if (rm != null) {
@@ -21,18 +34,18 @@ public class RepositorioReproducaoMidia {
 
 	public ArrayList<ReproducaoMidia> listarReproducoesNoPeriodo(LocalDateTime inicio, LocalDateTime fim) {
 		ArrayList<ReproducaoMidia> reproducoesNoPeriodo = new ArrayList<>();
-		for(ReproducaoMidia novaReproducao : reproducao) {
-			if (LocalDateTime.now().getYear() - novaReproducao.getdataHoraReproducao().getYear() >= inicio.getYear() && LocalDateTime.now().getYear() - novaReproducao.getdataHoraReproducao().getYear() <= fim.getYear()) {
-				reproducoesNoPeriodo.add(novaReproducao);
+		for(ReproducaoMidia listaPeriodo : reproducao) {
+			if (listaPeriodo.getdataHoraReproducao().isAfter(inicio) || listaPeriodo.getdataHoraReproducao().isBefore(fim)) {
+				reproducoesNoPeriodo.add(listaPeriodo);
 		}
 	  }
 		return reproducoesNoPeriodo;
 	}
 	public ArrayList<ReproducaoMidia> listarReproducoesPorUsuario(Consumidor usuario) {
 		ArrayList<ReproducaoMidia> reproducoesPorUsuario = new ArrayList<>();
-		for (ReproducaoMidia novaReproducao : reproducao) {
-			if (novaReproducao.getConsumidor().equals(usuario)) {
-				reproducoesPorUsuario.add(novaReproducao);
+		for (ReproducaoMidia listaUsuario : reproducao) {
+			if (listaUsuario.getConsumidor().equals(usuario)) {
+				reproducoesPorUsuario.add(listaUsuario);
 			}
 		}
 		return reproducoesPorUsuario;
@@ -40,11 +53,19 @@ public class RepositorioReproducaoMidia {
 
 	public ArrayList<ReproducaoMidia> listarReproducoesPorCategorias(String categorias) {
 		ArrayList<ReproducaoMidia> reproducoesPorCategorias = new ArrayList<>();
-		for (ReproducaoMidia novaReproducao : reproducao) {
-			if (novaReproducao.getMidia().getCategoria().contains(categorias)) {
-				reproducoesPorCategorias.add(novaReproducao);
+		for (ReproducaoMidia listaPorCategoria : reproducao) {
+			if (listaPorCategoria.getMidia().getCategoria().contains(categorias)) {
+				reproducoesPorCategorias.add(listaPorCategoria);
 			}
 		}
 		return reproducoesPorCategorias;
 	}
+
+
+	@Override
+	public String toString() {
+		return "RepositorioReproducaoMidia [reproducao = " + reproducao + "]";
+	}
+	
+	
 }

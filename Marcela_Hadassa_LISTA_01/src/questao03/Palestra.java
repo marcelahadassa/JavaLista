@@ -17,7 +17,6 @@ public class Palestra {
 		this.titulo = titulo;
 		this.palestrante = palestrante;
 		this.descricao = descricao;
-		this.avaliacoes = avaliacoes;
 		this.dataHora = dataHora;
 		this.local = local;
 		this.trilha = trilha;

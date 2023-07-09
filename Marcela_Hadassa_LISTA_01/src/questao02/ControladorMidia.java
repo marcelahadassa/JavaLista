@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 public class ControladorMidia {
 	private RepositorioUsuario repositorioUsuario;
 	private RepositorioMidia repositorioMidia;
@@ -34,11 +35,11 @@ public class ControladorMidia {
 			if (u instanceof Produtor) {
 			   Produtor produtor = (Produtor) u;
 			    if (produtor.getCategorias() != null) {
-			    	repositorioUsuario.cadastrarUsuario(u);
+			    	repositorioUsuario.getLista().add(u);
 			    }
 	    }
 			else {
-				repositorioUsuario.cadastrarUsuario(u);
+				repositorioUsuario.getLista().add(u);
 			}
 		}
 		
@@ -46,7 +47,7 @@ public class ControladorMidia {
 
 	protected void removerUsuario(Usuario u) {
 		if (u != null) {
-			repositorioUsuario.removerUsuario(u);
+			repositorioUsuario.getLista().remove(u);
 		}
 		else {
 			System.out.println("Nao e possivel remover um usuario nulo.");
@@ -64,18 +65,15 @@ public class ControladorMidia {
 	
 	protected void cadastrarMidia(Midia m) {
 		if (m != null) {
-			if (m instanceof Midia) {
-				Midia midia = (Midia) m;
 				if (m.getProdutor().getCategorias().contains(m.getCategoria())) {
-					repositorioMidia.cadastrarMidia(m);
+					repositorioMidia.getMidia().add(m);
 				}
 			}
 		}
-	}
 	
 	protected void removerMidia(Midia m) {
 		if (m != null) {
-			repositorioMidia.removerMidia(m);
+			repositorioMidia.getMidia().remove(m);
 		}
 	}
 	
@@ -83,8 +81,8 @@ public class ControladorMidia {
 		if (consumidor.getEmail() != null && midia.getArquivo() != null) {
 			
 			if(LocalDate.now().getYear() - consumidor.getdataNascimento().getYear() >= midia.getfaixaEtariaMinima()) {
-				ReproducaoMidia reproducaoM = new ReproducaoMidia(midia, consumidor, LocalDateTime.now());
-				repositorioReproducaoMidia.cadastrarReproducaoMidia(reproducaoM);
+				ReproducaoMidia reproducao = new ReproducaoMidia(midia, consumidor, LocalDateTime.now());
+				repositorioReproducaoMidia.getReproducao().add(reproducao);
 			}
 		}
 		
@@ -117,6 +115,32 @@ public class ControladorMidia {
 	public ArrayList<ReproducaoMidia> listarReproducoesPorCategorias(String categorias) {
 		return repositorioReproducaoMidia.listarReproducoesPorCategorias(categorias);
 	}
+
+	protected RepositorioUsuario getRepositorioUsuario() {
+		return repositorioUsuario;
+	}
+
+	protected void setRepositorioUsuario(RepositorioUsuario repositorioUsuario) {
+		this.repositorioUsuario = repositorioUsuario;
+	}
+
+	protected RepositorioMidia getRepositorioMidia() {
+		return repositorioMidia;
+	}
+
+	protected void setRepositorioMidia(RepositorioMidia repositorioMidia) {
+		this.repositorioMidia = repositorioMidia;
+	}
+
+	protected RepositorioReproducaoMidia getRepositorioReproducaoMidia() {
+		return repositorioReproducaoMidia;
+	}
+
+	protected void setRepositorioReproducaoMidia(RepositorioReproducaoMidia repositorioReproducaoMidia) {
+		this.repositorioReproducaoMidia = repositorioReproducaoMidia;
+	}
+	
+	
 	
 	
 	

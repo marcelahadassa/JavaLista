@@ -10,6 +10,14 @@ public class RepositorioUsuario {
 		 lista = new ArrayList<>();
 	 }
 	
+	protected ArrayList<Usuario> getLista() {
+		return lista;
+	}
+
+	protected void setLista(ArrayList<Usuario> lista) {
+		this.lista = lista;
+	}
+
 	public void cadastrarUsuario(Usuario u) {
 		boolean testeEmail = false;
 		for (Usuario usuario : lista) {
@@ -50,5 +58,6 @@ public class RepositorioUsuario {
 		}
 		return usuariosPorTipo;
 	} 
-
+	
+	
 }

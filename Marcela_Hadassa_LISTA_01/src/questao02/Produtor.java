@@ -25,6 +25,11 @@ public class Produtor extends Usuario {
 	public void setCategorias(List<String> categorias) {
 		this.categorias = categorias;
 	}
+	@Override
+	public String toString() {
+		return "Produtor [nomeCanal=" + nomeCanal + ", categorias=" + categorias + "]";
+	}
+	
 	
 	
 

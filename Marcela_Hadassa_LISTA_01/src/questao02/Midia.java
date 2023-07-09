@@ -6,14 +6,14 @@ public class Midia {
 	private String arquivo;
 	private int faixaEtariaMinima;
 	private String categoria;
-	private Produtor Produtor;
+	private Produtor produtor;
 	
-	protected Midia(LocalDateTime dataHoraUpload, String arquivo, int faixaEtariaMinima, String categoria, Produtor Produtor) {
+	protected Midia(LocalDateTime dataHoraUpload, String arquivo, int faixaEtariaMinima, String categoria, Produtor produtor) {
 		this.dataHoraUpload = dataHoraUpload;
 		this.arquivo = arquivo;
 		this.faixaEtariaMinima = faixaEtariaMinima;
 		this.categoria = categoria;
-		this.Produtor = Produtor;
+		this.produtor = produtor;
 	}
 	
 	protected LocalDateTime getDataHoraUpload() {
@@ -50,12 +50,20 @@ public class Midia {
 	}
 	
 	protected Produtor getProdutor() {
-		return this.Produtor;
+		return this.produtor;
 	}
 	
 	protected void setProdutor(Produtor produtor) {
-		this.Produtor = produtor;
+		this.produtor = produtor;
 	}
+
+	@Override
+	public String toString() {
+		return "Midia [dataHoraUpload=" + dataHoraUpload + ", arquivo=" + arquivo + ", faixaEtariaMinima="
+				+ faixaEtariaMinima + ", categoria=" + categoria + ", produtor=" + produtor + "]";
+	}
+	
+
  }
 
 

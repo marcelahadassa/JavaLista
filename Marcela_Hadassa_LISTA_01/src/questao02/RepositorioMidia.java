@@ -2,20 +2,30 @@ package questao02;
 import java.util.ArrayList;
 
 public class RepositorioMidia {
-	private ArrayList<Midia> midia;
+	private ArrayList<Midia> midia = new ArrayList<>();
 	
 	public void RepositororioMidia() {
-		 midia = new ArrayList<>();
 	 }
 	
+	
+	protected ArrayList<Midia> getMidia() {
+		return midia;
+	}
+
+
+	protected void setMidia(ArrayList<Midia> midia) {
+		this.midia = midia;
+	}
+
+
 	public void cadastrarMidia(Midia m) {
 		boolean testeMidia = false;
-		for (Midia novamidia : midia) {
-			if (novamidia.getArquivo() == m.getArquivo()) {
+		for (Midia cadastroMidia : midia) {
+			if (cadastroMidia.getArquivo() == m.getArquivo()) {
 				testeMidia = true;
 			}
 		}
-		if (testeMidia == false) {
+		if (testeMidia != true) {
 			midia.add(m);
 		}
 		else {
@@ -29,9 +39,9 @@ public class RepositorioMidia {
 	
 	public ArrayList<Midia> listarMidiaPorFaixaEtaria(int faixaEtaria) {
 		ArrayList<Midia> midiaPorFaixaEtaria  = new ArrayList<>();
-		for (Midia novamidia : midia) {
-			if (novamidia.getfaixaEtariaMinima() >= faixaEtaria) {
-				midiaPorFaixaEtaria.add(novamidia);
+		for (Midia listarMidia : midia) {
+			if (listarMidia.getfaixaEtariaMinima() >= faixaEtaria) {
+				midiaPorFaixaEtaria.add(listarMidia);
 			}
 		}
 		
@@ -40,9 +50,9 @@ public class RepositorioMidia {
 	
 	public ArrayList<Midia> listarMidiasPorCategoria(String categoria) {
 		ArrayList<Midia> midiaPorCategoria = new ArrayList<>();
-		for (Midia novaMidia : midia) {
-			if (novaMidia.getCategoria() == categoria) {
-				midiaPorCategoria.add(novaMidia);
+		for (Midia listarCategoria : midia) {
+			if (listarCategoria.getCategoria() == categoria) {
+				midiaPorCategoria.add(listarCategoria);
 			}
 		}
 		return midiaPorCategoria;
