@@ -11,8 +11,10 @@ public class Palestra {
 	public LocalDateTime dataHora;
 	public String local;
 	public String trilha;
+	public double calcularMediaAvaliacoes;
 	
-	protected Palestra(Long id, String titulo, Palestrante palestrante, String descricao,  ArrayList<Avaliacao> avaliacoes, LocalDateTime dataHora, String local, String trilha) {
+	
+	protected Palestra(Long id, String titulo, Palestrante palestrante, String descricao,  ArrayList<Avaliacao> avaliacoes, LocalDateTime dataHora, String local, String trilha, double calcularMediaAvaliacoes) {
 		this.id = id;
 		this.titulo = titulo;
 		this.palestrante = palestrante;
@@ -20,6 +22,33 @@ public class Palestra {
 		this.dataHora = dataHora;
 		this.local = local;
 		this.trilha = trilha;
+		this.calcularMediaAvaliacoes = calcularMediaAvaliacoes;
+	}
+	
+	@SuppressWarnings("unused")
+	private double calcularMediaAvaliacoes(Palestra avaliacaoPalestra) {
+	    double notaSoma = 0.0;
+	    int finalAvaliacoes = avaliacaoPalestra.getAvaliacoes().size();
+
+	    for (Avaliacao avaliacoes : avaliacaoPalestra.getAvaliacoes()) {
+	        notaSoma += avaliacoes.getNota();
+	    }
+
+	    if (finalAvaliacoes > 0) {
+	        return notaSoma / finalAvaliacoes;
+	    } else {
+	        return 0.0;
+	    }
+	}
+	 
+	
+	
+	protected double getCalcularMediaAvaliacoes() {
+		return calcularMediaAvaliacoes;
+	}
+
+	protected void setCalcularMediaAvaliacoes(double calcularMediaAvaliacoes) {
+		this.calcularMediaAvaliacoes = calcularMediaAvaliacoes;
 	}
 
 	protected Long getId() {
@@ -85,6 +114,8 @@ public class Palestra {
 	protected void setTrilha(String trilha) {
 		this.trilha = trilha;
 	}
+	
+	
 	
 	
 }
