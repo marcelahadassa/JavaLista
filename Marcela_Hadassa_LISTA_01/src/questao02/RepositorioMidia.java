@@ -1,9 +1,10 @@
 package questao02;
 import java.util.ArrayList;
 
-public class RepositorioMidia {
+public class RepositorioMidia implements IRepositorioMidia {
 	private ArrayList<Midia> midia = new ArrayList<>();
 	
+	@Override
 	public void RepositororioMidia() {
 	 }
 	
@@ -18,6 +19,7 @@ public class RepositorioMidia {
 	}
 
 
+	@Override
 	public void cadastrarMidia(Midia m) {
 		boolean testeMidia = false;
 		for (Midia cadastroMidia : midia) {
@@ -33,10 +35,12 @@ public class RepositorioMidia {
 		}
 	}
 	
+	@Override
 	public void removerMidia(Midia m) {
 		midia.remove(m);
 	}
 	
+	@Override
 	public ArrayList<Midia> listarMidiaPorFaixaEtaria(int faixaEtaria) {
 		ArrayList<Midia> midiaPorFaixaEtaria  = new ArrayList<>();
 		for (Midia listarMidia : midia) {
@@ -48,6 +52,7 @@ public class RepositorioMidia {
 		return midiaPorFaixaEtaria;
 	}
 	
+	@Override
 	public ArrayList<Midia> listarMidiasPorCategoria(String categoria) {
 		ArrayList<Midia> midiaPorCategoria = new ArrayList<>();
 		for (Midia listarCategoria : midia) {
@@ -57,6 +62,7 @@ public class RepositorioMidia {
 		}
 		return midiaPorCategoria;
 	}
+	
 	
 }
 

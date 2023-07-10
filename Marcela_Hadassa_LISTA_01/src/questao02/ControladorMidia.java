@@ -54,15 +54,7 @@ public class ControladorMidia {
 		}
 	}
 	
-	//protected void cadastrarMidia(Midia m) {
-	    //if (m != null && m.getProdutor() != null && !m.getProdutor().getCategorias().isEmpty()) {
-	       // if (m.getProdutor().getCategorias().contains(m.getCategoria())) {
-	            //repositorioMidia.cadastrarMidia(m);
-	        //}
-	    //}
-	//}
 
-	
 	protected void cadastrarMidia(Midia m) {
 		if (m != null) {
 				if (m.getProdutor().getCategorias().contains(m.getCategoria())) {
@@ -87,6 +79,8 @@ public class ControladorMidia {
 		}
 		
 	}
+	
+	
 
 	public ArrayList<Usuario> listarUsuariosComIdadeAcimaDe(int idade) {
 		return repositorioUsuario.listarUsuariosComIdadeAcimaDe(idade);
@@ -116,7 +110,7 @@ public class ControladorMidia {
 		return repositorioReproducaoMidia.listarReproducoesPorCategorias(categorias);
 	}
 
-	protected RepositorioUsuario getRepositorioUsuario() {
+	protected IRepositorioUsuario getRepositorioUsuario() {
 		return repositorioUsuario;
 	}
 
@@ -124,7 +118,7 @@ public class ControladorMidia {
 		this.repositorioUsuario = repositorioUsuario;
 	}
 
-	protected RepositorioMidia getRepositorioMidia() {
+	protected IRepositorioMidia getRepositorioMidia() {
 		return repositorioMidia;
 	}
 
@@ -132,7 +126,7 @@ public class ControladorMidia {
 		this.repositorioMidia = repositorioMidia;
 	}
 
-	protected RepositorioReproducaoMidia getRepositorioReproducaoMidia() {
+	protected IRepositorioReproducaoMidia getRepositorioReproducaoMidia() {
 		return repositorioReproducaoMidia;
 	}
 

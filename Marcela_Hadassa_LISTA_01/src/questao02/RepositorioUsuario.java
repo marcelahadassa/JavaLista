@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 
-public class RepositorioUsuario {
+public class RepositorioUsuario implements IRepositorioUsuario {
 	 private ArrayList<Usuario> lista;
 	 
 	 public RepositorioUsuario() {
@@ -18,6 +18,7 @@ public class RepositorioUsuario {
 		this.lista = lista;
 	}
 
+	@Override
 	public void cadastrarUsuario(Usuario u) {
 		boolean testeEmail = false;
 		for (Usuario usuario : lista) {
@@ -34,10 +35,12 @@ public class RepositorioUsuario {
 	} 
 	
 	
+	@Override
 	public void removerUsuario(Usuario u) {
 			lista.remove(u);
 		
 	}
+	@Override
 	public ArrayList<Usuario> listarUsuariosComIdadeAcimaDe(int idade) {
 		ArrayList<Usuario> usuariosAcimaDaIdade  = new ArrayList<>();
 		for (Usuario usuario : lista) {
@@ -49,6 +52,7 @@ public class RepositorioUsuario {
 		return usuariosAcimaDaIdade;
 	}
 	
+	@Override
 	public ArrayList<Usuario> listarUsuariosPorTipo(@SuppressWarnings("rawtypes") Class tipo) {
 		ArrayList<Usuario> usuariosPorTipo = new ArrayList<>();
 		for (Usuario usuario : lista) {

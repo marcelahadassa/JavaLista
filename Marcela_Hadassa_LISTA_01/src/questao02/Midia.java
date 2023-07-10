@@ -28,7 +28,7 @@ public class Midia {
 		return this.arquivo;
 	}
 	
-	protected void setdataNascimento(String arquivo) {
+	protected void setArquivo(String arquivo) {
 		this.arquivo = arquivo;
 	}
 	
@@ -36,7 +36,7 @@ public class Midia {
 		return this.faixaEtariaMinima;
 	}
 	
-	protected void setfaixaEtariaMinima(int faixaEtariaMinima) {
+	protected void setFaixaEtariaMinima(int faixaEtariaMinima) {
 		this.faixaEtariaMinima = faixaEtariaMinima;
 
 	}

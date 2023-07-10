@@ -36,23 +36,23 @@ public class MainTestes {
 		
 		Consumidor consumidorUm = new Consumidor("Gabriel Cisneiros Silva de Oliveira", LocalDate.parse("2004-02-20"), "gabrielcisneiros@gmail.com", interesses);
 		Consumidor consumidorDois = new Consumidor("Nicholas Camargo Silva", LocalDate.parse("2002-08-21"), "nicocamargo@gmail.com", interesses);
-		Consumidor consumidorTres = new Consumidor("Arthur Fillipe", LocalDate.parse("2004-03-10"), "arthurfillipe@gmail.com", interesses);
+		Consumidor consumidorTres = new Consumidor("Arthur Fillipe Lira Aleixo", LocalDate.parse("2004-03-10"), "arthurfillipe@gmail.com", interesses);
 		Consumidor consumidorQuatro = new Consumidor("Marcio Antônio", LocalDate.parse("2004-08-26"), "marcioantonio@gmail.com", interesses);
 		Consumidor consumidorCinco = new Consumidor("Lucas Aurelio Vieira Santos", LocalDate.parse("2004-04-01"), "lucasaurelio@gmail.com", interesses);
 		Consumidor consumidorSeis = new Consumidor("Gabriel Ricardo", LocalDate.parse("2008-11-18"), "gabricardo@gmail.com", interesses);
 		Consumidor consumidorSete = new Consumidor("Suani Batista de Oliveira", LocalDate.parse("1963-02-26"), "suanioliveira@gmail.com", interesses);
 		
 		
-		videoTube.getRepositorioUsuario().getLista().add(consumidorUm);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorDois);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorTres);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorQuatro);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorCinco);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorSeis);
-		videoTube.getRepositorioUsuario().getLista().add(consumidorSete);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorUm);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorDois);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorTres);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorQuatro);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorCinco);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorSeis);
+		videoTube.getRepositorioUsuario().cadastrarUsuario(consumidorSete);
 		
 		
-		videoTube.getRepositorioUsuario().getLista().remove(consumidorSete);
+		videoTube.getRepositorioUsuario().removerUsuario(consumidorSete);
 		
 		ArrayList<Usuario> primeiraListagem = videoTube.listarUsuariosComIdadeAcimaDe(16);
 		System.out.println("Listagem de Usuarios - Acima de 16 anos: \n");
@@ -72,20 +72,20 @@ public class MainTestes {
 		Midia midiaQuatro = new Midia(LocalDateTime.now().minusDays(100), "Only the brave", 14, "Musica", produtorDois);
 		Midia midiaCinco = new Midia(LocalDateTime.now().minusDays(290), "Aprendendo a programar com os Beatles!", 12, "Programacao", produtorUm);
 		Midia midiaSeis = new Midia(LocalDateTime.now().minusDays(60), "Treino rapido em casa", 16, "Academia", produtorTres);
-		Midia midiaSete = new Midia(LocalDateTime.now().minusDays(30), "Como estudar sobre o Comunismo?", 16, "Historia", produtorUm);
+		Midia midiaSete = new Midia(LocalDateTime.now().minusDays(30), "A historia de Alan Turing", 16, "Historia", produtorUm);
 		Midia midiaOito = new Midia(LocalDateTime.now().minusDays(7000), "Cantando com ex amigos", 16, "Musica", produtorDois);
 		
 		
-		videoTube.getRepositorioMidia().getMidia().add(midiaUm);
-		videoTube.getRepositorioMidia().getMidia().add(midiaDois);
-		videoTube.getRepositorioMidia().getMidia().add(midiaTres);
-		videoTube.getRepositorioMidia().getMidia().add(midiaQuatro);
-		videoTube.getRepositorioMidia().getMidia().add(midiaCinco);
-		videoTube.getRepositorioMidia().getMidia().add(midiaSeis);
-		videoTube.getRepositorioMidia().getMidia().add(midiaSete);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaUm);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaDois);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaTres);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaQuatro);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaCinco);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaSeis);
+		videoTube.getRepositorioMidia().cadastrarMidia(midiaSete);
 		
 		
-		videoTube.getRepositorioMidia().getMidia().remove(midiaOito);
+		videoTube.getRepositorioMidia().removerMidia(midiaOito);
 		
 		
 
@@ -96,7 +96,7 @@ public class MainTestes {
 			System.out.println(faixaEtaria.getArquivo());
 		}
 		
-		ArrayList<Midia> quartaListagem = videoTube.listarMidiasPorCategoria("Historia");
+		ArrayList<Midia> quartaListagem = videoTube.listarMidiasPorCategoria("Programacao");
 		System.out.println("\n\nListagem de Midias - Categoria Programacao:\n ");
 		for (Midia porCategoria : quartaListagem) {
 			System.out.println(porCategoria.getArquivo());
@@ -126,12 +126,25 @@ public class MainTestes {
 		videoTube.reproduzirMidia(consumidorDois, midiaUm);
 		
 	
-		ArrayList<ReproducaoMidia> quintaListagem = videoTube.listarReproducoesNoPeriodo(LocalDateTime.parse("2020-05-24"), LocalDateTime.now());
-		System.out.println("Listagem de Reproducoes em determinados periodos: ");
+		ArrayList<ReproducaoMidia> quintaListagem = videoTube.listarReproducoesNoPeriodo(LocalDateTime.now().minusWeeks(100), LocalDateTime.now().plusWeeks(7));
+		System.out.println("\n\nListagem de Reproducoes em determinados periodos: \n");
 		for (ReproducaoMidia repMidia : quintaListagem) {
-			System.out.println(repMidia.toString());
+			System.out.println(repMidia.getMidia().getArquivo());
 		}
-
-	}
+		
+		
+		ArrayList<ReproducaoMidia> sextaListagem = videoTube.listarReproducoesPorUsuario(consumidorCinco);
+		System.out.println("\n\nListagem de reproducoes por usuario: \n");
+		for (ReproducaoMidia repUsuario : sextaListagem) {
+			System.out.println(repUsuario.getMidia().getArquivo());
+		}
+		
+		ArrayList<ReproducaoMidia> setimaListagem = videoTube.listarReproducoesPorCategorias("Musica");
+		System.out.println("\n\nListagem de reproducoes por categoria: \n"); {
+			for (ReproducaoMidia repCategoria : setimaListagem) {
+				System.out.println(repCategoria.getMidia().getArquivo());
+			}
+		}
 	
 	}
+}
