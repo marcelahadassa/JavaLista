@@ -12,7 +12,8 @@ public class Avaliacao {
 		this.comentario = comentario;
 		this.avaliador = avaliador;
 	}
-
+	
+	
 	protected Palestra getPalestra() {
 		return palestra;
 	}
