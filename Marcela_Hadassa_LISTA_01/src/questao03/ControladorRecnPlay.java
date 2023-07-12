@@ -105,7 +105,7 @@ public class ControladorRecnPlay {
 			double media = palestra.calcularMediaAvaliacoes();
 			if (media > maiorMedia) {
 				maiorMedia = media;
-				palestrasAvaliadas.add(palestra);
+			
 			} 
 			if (media == maiorMedia) {
 				palestrasAvaliadas.add(palestra);

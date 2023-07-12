@@ -16,4 +16,10 @@ public class Palestrante extends Pessoa {
 	protected void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}
+
+	@Override
+	public String toString() {
+		return "Palestrante [empresa: " + empresa + "]";
+	}
+	
 }

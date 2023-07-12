@@ -13,7 +13,7 @@ public class Palestra {
 	public String trilha;
 	
 	
-	protected Palestra(Long id, String titulo, Palestrante palestrante, String descricao,  ArrayList<Avaliacao> avaliacoes, LocalDateTime dataHora, String local, String trilha) {
+	protected Palestra(Long id, String titulo, Palestrante palestrante, String descricao, LocalDateTime dataHora, String local, String trilha) {
 		this.id = id;
 		this.titulo = titulo;
 		this.palestrante = palestrante;

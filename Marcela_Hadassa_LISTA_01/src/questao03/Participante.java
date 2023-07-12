@@ -16,6 +16,12 @@ public class Participante extends Pessoa {
 	protected void setTrilhaDeInteresse(String trilhaDeInteresse) {
 		this.trilhaDeInteresse = trilhaDeInteresse;
 	}
+
+	@Override
+	public String toString() {
+		return "Participante [trilhaDeInteresse: " + trilhaDeInteresse + "]";
+	}
+	
 	
 	
 }
